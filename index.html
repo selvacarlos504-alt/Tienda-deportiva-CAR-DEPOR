@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Productos deportivos CAR DEPOR</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="header-left">
+      <h1>🏆 Productos deportivos CAR DEPOR</h1>
+Bienvenidos(a)Somos Tienda de productos deprotiva CAR DEPOR  tu tienda deportiva en linea con envio a toda Costa Rica. Ofresemos ropa, tenis, botellas balones y muchas cosas mas 
+
+    </div>
+    <div class="header-right">
+      <button class="modo-btn" onclick="toggleModo()">🌙 Modo oscuro</button>
+      <button class="carrito-btn" onclick="abrirCarrito()">🛒 Carrito (<span id="contador">0</span>)</button>
+    </div>
+  </header>
+
+  <nav>
+    <a href="#balones">Balones</a>
+    <a href="#camisetas">Camisetas</a>
+    <a href="#tenis">Tenis</a>
+    <a href="#accesorios">Accesorios</a>
+  </nav>
+
+  <main>
+    <section id="balones" class="contenedor-productos">
+      <div class="producto">
+        <img src="c:\Users\CTPH\Desktop\carlos selva examen 2 tiemda deportiba\imajenes\1.png" alt="Balón de fútbol">
+        <h3>Balón de Fútbol Adidas</h3>
+        <p class="precio">₡35,000 | $66.00</p>
+        <button class="agregar-btn" onclick="agregarAlCarrito('Balón de Fútbol Adidas', 35000, 66)">Añadir al carrito</button>
+      </div>
+
+      <div class="producto">
+        <img src="c:\Users\CTPH\Desktop\carlos selva examen 2 tiemda deportiba\imajenes\2.png" alt="Balón de baloncesto">
+        <h3>Balón Baloncesto Spalding</h3>
+        <p class="precio">₡29,000 | $55.00</p>
+        <button class="agregar-btn" onclick="agregarAlCarrito('Balón Baloncesto Spalding', 29000, 55)">Añadir al carrito</button>
+      </div>
+    </section>
+
+    <section id="camisetas" class="contenedor-productos">
+      <div class="producto">
+        <img src="c:\Users\CTPH\Desktop\carlos selva examen 2 tiemda deportiba\imajenes\3.png" alt="Camiseta Nike">
+        <h3>Camiseta Nike Pro</h3>
+        <p class="precio">₡22,000 | $41.00</p>
+        <button class="agregar-btn" onclick="agregarAlCarrito('Camiseta Nike Pro', 22000, 41)">Añadir al carrito</button>
+      </div>
+
+      <div class="producto">
+        <img src="c:\Users\CTPH\Desktop\carlos selva examen 2 tiemda deportiba\imajenes\4.png" alt="Camiseta Adidas">
+        <h3>Camiseta Running Adidas</h3>
+        <p class="precio">₡24,000 | $45.00</p>
+        <button class="agregar-btn" onclick="agregarAlCarrito('Camiseta Running Adidas', 24000, 45)">Añadir al carrito</button>
+      </div>
+    </section>
+
+    <section id="tenis" class="contenedor-productos">
+      <div class="producto">
+        <img src="c:\Users\CTPH\Desktop\carlos selva examen 2 tiemda deportiba\imajenes\5.jpg" alt="Tenis Nike">
+        <h3>Tenis Nike Air Zoom</h3>
+        <p class="precio">₡58,000 | $110.00</p>
+        <button class="agregar-btn" onclick="agregarAlCarrito('Tenis Nike Air Zoom', 58000, 110)">Añadir al carrito</button>
+      </div>
+
+      <div class="producto">
+        <img src="c:\Users\CTPH\Desktop\carlos selva examen 2 tiemda deportiba\imajenes\5descarga.jpg" alt="Tenis Puma">
+        <h3>Tenis Puma Runner</h3>
+        <p class="precio">₡49,000 | $93.00</p>
+        <button class="agregar-btn" onclick="agregarAlCarrito('Tenis Puma Runner', 49000, 93)">Añadir al carrito</button>
+      </div>
+    </section>
+
+    <section id="accesorios" class="contenedor-productos">
+      <div class="producto">
+        <img src="c:\Users\CTPH\Desktop\carlos selva examen 2 tiemda deportiba\imajenes\7.jpg" alt="Botella">
+        <h3>Botella Deportiva</h3>
+        <p class="precio">₡8,500 | $16.00</p>
+        <button class="agregar-btn" onclick="agregarAlCarrito('Botella Deportiva', 8500, 16)">Añadir al carrito</button>
+      </div>
+
+      <div class="producto">
+        <img src="c:\Users\CTPH\Desktop\carlos selva examen 2 tiemda deportiba\imajenes\8.jpg" alt="Guantes">
+        <h3>Guantes de Gimnasio</h3>
+        <p class="precio">₡12,000 | $23.00</p>
+        <button class="agregar-btn" onclick="agregarAlCarrito('Guantes de Gimnasio', 12000, 23)">Añadir al carrito</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- VENTANA CARRITO -->
+  <div id="panel-carrito" class="panel oculto">
+    <h2>🛍️ Carrito</h2>
+    <ul id="lista"></ul>
+    <div class="totales">
+      <p id="total-crc">Total (₡): ₡0</p>
+      <p id="total-usd">Total ($): $0.00</p>
+    </div>
+    <div class="panel-acciones">
+      <label for="moneda">Moneda de pago:</label>
+      <select id="moneda">
+        <option value="crc" selected>Colones (₡)</option>
+        <option value="usd">Dólares ($)</option>
+      </select>
+      <button onclick="irAPago()" class="continuar">Continuar al pago</button>
+      <button onclick="cerrarCarrito()" class="cerrar">Cerrar</button>
+    </div>
+  </div>
+
+  <!-- VENTANA PAGO / ENVÍO -->
+  <div id="panel-pago" class="panel oculto">
+    <h2>💳 Envío y Pago</h2>
+    <form id="form-pago" onsubmit="return procesarPago(event)">
+      <label>Nombre completo</label>
+      <input type="text" id="cliente-nombre" required />
+
+      <label>Teléfono de contacto</label>
+      <input type="tel" id="cliente-telefono" placeholder="Ej: 8888-8888" required />
+
+      <label>Ubicación / Dirección</label>
+      <input type="text" id="cliente-direccion" required />
+
+      <label>Método de pago</label>
+      <select id="metodo-pago" required>
+        <option value="">Seleccione...</option>
+        <option value="tarjeta">Tarjeta</option>
+        <option value="efectivo">Efectivo</option>
+        <option value="sinpe">SINPE Móvil</option>
+      </select>
+
+      <label>Moneda de pago</label>
+      <select id="moneda-pago" required>
+        <option value="crc">Colones (₡)</option>
+        <option value="usd">Dólares ($)</option>
+      </select>
+
+      <!-- Simulación de datos de tarjeta (solo para apariencia) -->
+      <div id="datos-tarjeta" class="oculto">
+        <label>Nº Tarjeta</label>
+        <input type="text" placeholder="0000 0000 0000 0000" />
+        <label>Fecha Vto</label>
+        <input type="text" placeholder="MM/AA" />
+        <label>CVV</label>
+        <input type="text" placeholder="123" />
+      </div>
+
+      <div class="acciones-pago">
+        <button type="submit" class="confirmar">Confirmar pedido</button>
+        <button type="button" onclick="cerrarPago()" class="cerrar">Cancelar</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- RESUMEN / FACTURA -->
+  <div id="panel-resumen" class="panel oculto">
+    <h2>📄 Resumen de factura</h2>
+    <div id="resumen-contenido"></div>
+    <div class="acciones-resumen">
+      <button id="btn-whatsapp" class="whatsapp" onclick="enviarWhatsApp()">Abrir WhatsApp (Enviar pedido)</button>
+      <button onclick="cerrarResumen()" class="cerrar">Cerrar</button>
+    </div>
+    <small class="nota">Mensaje prellenado listo para enviar a +50686729696.</small>
+  </div>
+
+  <footer>
+    <p>© 2025 CAR DEPOR | Gracias por preferirnos</p>
+  </footer>
+
+  <script>
+    /* ---------- Datos y carrito ---------- */
+    const telefonoDestino = "50686729696"; // número de recepción (con código país 506)
+    let carrito = [];
+    const contadorEl = document.getElementById("contador");
+
+    function agregarAlCarrito(nombre, crc, usd) {
+      carrito.push({ nombre, crc, usd });
+      actualizarUICarrito();
+    }
+
+    function actualizarUICarrito() {
+      const lista = document.getElementById("lista");
+      lista.innerHTML = "";
+      let sumCRC = 0, sumUSD = 0;
+      carrito.forEach((item, i) => {
+        const li = document.createElement("li");
+        li.innerHTML = `
+          <span class="item-nombre">${item.nombre}</span>
+          <span class="item-precio">₡${item.crc.toLocaleString()} | $${item.usd.toFixed(2)}</span>
+          <button class="eliminar" onclick="eliminarProducto(${i})">Eliminar</button>
+        `;
+        lista.appendChild(li);
+        sumCRC += item.crc;
+        sumUSD += item.usd;
+      });
+      document.getElementById("total-crc").textContent = "Total (₡): ₡" + sumCRC.toLocaleString();
+      document.getElementById("total-usd").textContent = "Total ($): $" + sumUSD.toFixed(2);
+      contadorEl.textContent = carrito.length;
+    }
+
+    function eliminarProducto(index) {
+      carrito.splice(index, 1);
+      actualizarUICarrito();
+    }
+
+    /* ---------- Paneles ---------- */
+    function abrirCarrito() {
+      document.getElementById("panel-carrito").classList.remove("oculto");
+    }
+    function cerrarCarrito() {
+      document.getElementById("panel-carrito").classList.add("oculto");
+    }
+    function irAPago() {
+      if (carrito.length === 0) {
+        alert("Tu carrito está vacío.");
+        return;
+      }
+      cerrarCarrito();
+      document.getElementById("panel-pago").classList.remove("oculto");
+    }
+    function cerrarPago() {
+      document.getElementById("panel-pago").classList.add("oculto");
+      mostrarOcultarDatosTarjeta();
+    }
+
+    /* Mostrar campos tarjeta si selecciona 'tarjeta' */
+    const metodoPagoEl = document.getElementById("metodo-pago");
+    metodoPagoEl.addEventListener("change", mostrarOcultarDatosTarjeta);
+    function mostrarOcultarDatosTarjeta() {
+      const datosTarj = document.getElementById("datos-tarjeta");
+      if (metodoPagoEl.value === "tarjeta") datosTarj.classList.remove("oculto");
+      else datosTarj.classList.add("oculto");
+    }
+
+    /* ---------- Procesar pedido y generar resumen ---------- */
+    function procesarPago(e) {
+      e.preventDefault();
+      const nombre = document.getElementById("cliente-nombre").value.trim();
+      const telefono = document.getElementById("cliente-telefono").value.trim();
+      const direccion = document.getElementById("cliente-direccion").value.trim();
+      const metodo = document.getElementById("metodo-pago").value;
+      const monedaPago = document.getElementById("moneda-pago").value;
+
+      if (!nombre || !telefono || !direccion || !metodo || !monedaPago) {
+        alert("Por favor completa todos los campos.");
+        return false;
+      }
+
+      // Calcular totales
+      let totalCRC = 0, totalUSD = 0;
+      carrito.forEach(i => { totalCRC += i.crc; totalUSD += i.usd; });
+
+      // Generar número de seguimiento: PED-YYYYMMDD-HHMMSS-RND
+      const now = new Date();
+      const pad = n => n.toString().padStart(2, "0");
+      const fechaStr = now.getFullYear().toString()
+        + pad(now.getMonth()+1)
+        + pad(now.getDate())
+        + "-" + pad(now.getHours())
+        + pad(now.getMinutes())
+        + pad(now.getSeconds());
+      const rnd = Math.floor(Math.random()*900 + 100);
+      const tracking = `PED-${fechaStr}-${rnd}`;
+
+      // Preparar resumen para mostrar
+      const resumenDiv = document.getElementById("resumen-contenido");
+      resumenDiv.innerHTML = `
+        <p><strong>Nº de seguimiento:</strong> ${tracking}</p>
+        <p><strong>Cliente:</strong> ${escapeHtml(nombre)} / Tel: ${escapeHtml(telefono)}</p>
+        <p><strong>Dirección:</strong> ${escapeHtml(direccion)}</p>
+        <p><strong>Método de pago:</strong> ${escapeHtml(metodo)}</p>
+        <p><strong>Moneda de pago seleccionada:</strong> ${monedaPago === 'crc' ? 'Colones (₡)' : 'Dólares ($)'}</p>
+        <hr />
+      `;
+
+      // Lista de productos
+      const ul = document.createElement("ul");
+      carrito.forEach(it => {
+        const li = document.createElement("li");
+        li.textContent = `${it.nombre} — ₡${it.crc.toLocaleString()} | $${it.usd.toFixed(2)}`;
+        ul.appendChild(li);
+      });
+      resumenDiv.appendChild(ul);
+
+      // Totales según moneda elegida
+      if (monedaPago === "crc") {
+        resumenDiv.innerHTML += `<hr /><p><strong>Total a pagar:</strong> ₡${totalCRC.toLocaleString()} (Colones)</p>`;
+      } else {
+        resumenDiv.innerHTML += `<hr /><p><strong>Total a pagar:</strong> $${totalUSD.toFixed(2)} (Dólares)</p>`;
+      }
+
+      resumenDiv.innerHTML += `<p class="nota-pedido">✅ Su pedido será entregado en 15 días hábiles en la dirección indicada. Gracias por preferirnos.</p>`;
+
+      // Guardar datos del pedido en un objeto global para usar en WhatsApp
+      window.ultimoPedido = {
+        tracking, nombre, telefono, direccion, metodo, monedaPago,
+        totalCRC, totalUSD, productos: JSON.parse(JSON.stringify(carrito))
+      };
+
+      // Mostrar panel resumen
+      document.getElementById("panel-pago").classList.add("oculto");
+      document.getElementById("panel-resumen").classList.remove("oculto");
+
+      // Vaciar carrito localmente (simula compra)
+      carrito = [];
+      actualizarUICarrito();
+
+      return false;
+    }
+
+    /* Escape básico para evitar HTML en inputs al mostrar */
+    function escapeHtml(text) {
+      return text.replace(/[&<>"']/g, function(m){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;"}[m];});
+    }
+
+    /* ---------- WhatsApp: preparar mensaje y abrir enlace ---------- */
+    function enviarWhatsApp() {
+      if (!window.ultimoPedido) {
+        alert("No hay pedido para enviar.");
+        return;
+      }
+      const p = window.ultimoPedido;
+      // Crear texto
+      let lineas = [];
+      lineas.push("Nuevo pedido desde CAR DEPOR");
+      lineas.push("Nº seguimiento: " + p.tracking);
+      lineas.push("Cliente: " + p.nombre + " (Tel: " + p.telefono + ")");
+      lineas.push("Dirección: " + p.direccion);
+      lineas.push("Método de pago: " + p.metodo);
+      lineas.push("Moneda de pago: " + (p.monedaPago === 'crc' ? 'Colones (₡)' : 'Dólares ($)'));
+      lineas.push("--- Productos ---");
+      p.productos.forEach((it, i) => {
+        lineas.push(`${i+1}) ${it.nombre} — ₡${it.crc.toLocaleString()} | $${it.usd.toFixed(2)}`);
+      });
+      lineas.push("-----------------");
+      if (p.monedaPago === "crc") lineas.push("Total a pagar: ₡" + p.totalCRC.toLocaleString());
+      else lineas.push("Total a pagar: $" + p.totalUSD.toFixed(2));
+      lineas.push("");
+      lineas.push("Mensaje automático: El pedido estará en la puerta en 15 días. Gracias por preferirnos.");
+
+      const texto = encodeURIComponent(lineas.join("\n"));
+      const url = `https://wa.me/${telefonoDestino}?text=${texto}`;
+
+      // Abrir en nueva pestaña
+      window.open(url, "_blank");
+    }
+
+    function cerrarResumen() {
+      document.getElementById("panel-resumen").classList.add("oculto");
+    }
+
+    /* Modo oscuro */
+    function toggleModo() {
+      document.body.classList.toggle("dark");
+      const btn = document.querySelector(".modo-btn");
+      btn.textContent = document.body.classList.contains("dark") ? "☀️ Modo claro" : "🌙 Modo oscuro";
+    }
+
+    // Inicializar
+    actualizarUICarrito();
+  </script>
+</body>
+</html>
